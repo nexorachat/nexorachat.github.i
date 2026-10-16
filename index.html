@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nombre de tu empresa · Servicios profesionales</title>
+  <meta name="description" content="Servicios profesionales con trato directo, plazos claros y resultados medibles. Solicita tu presupuesto sin compromiso.">
+  <meta property="og:title" content="Nombre de tu empresa · Servicios profesionales">
+  <meta property="og:description" content="Trato directo, plazos claros y resultados medibles.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E1F2E'/%3E%3Cpath d='M9 22V10h6a4 4 0 010 8h-3' stroke='%23fff' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#0e1f2e; --mist:#f3f5f7; --white:#fff; --teal:#0f6b6b; --teal-d:#0a4f4f;
+      --brass:#b08a3e; --line:#d5dce1; --muted:#4a5b68;
+      --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+      --body:"Source Sans 3",Georgia,serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:80px}
+    body{margin:0;background:var(--white);color:var(--navy);font-family:var(--body);font-size:1.125rem;line-height:1.65}
+    a{color:var(--teal)}
+    :focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+    .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+    .skip{position:absolute;left:-999px;top:8px;background:var(--white);padding:8px 14px;z-index:20}
+    .skip:focus{left:8px}
+
+    /* Cabecera */
+    .top{position:sticky;top:0;z-index:10;background:var(--white);border-bottom:1px solid var(--line)}
+    .top-in{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;min-height:68px}
+    .brand{font-family:var(--display);font-weight:800;font-size:1.3rem;color:var(--navy);text-decoration:none}
+    .nav{display:flex;align-items:center;gap:26px}
+    .nav a{color:var(--navy);text-decoration:none;font-weight:600;font-size:1rem}
+    .nav a:hover{color:var(--teal)}
+    .nav .nav-cta{background:var(--navy);color:var(--white);padding:9px 18px;border-radius:6px}
+    .nav .nav-cta:hover{background:var(--teal);color:var(--white)}
+    .menu-btn{display:none;font:inherit;font-weight:600;background:none;border:2px solid var(--navy);border-radius:6px;padding:6px 14px;color:var(--navy);cursor:pointer}
+
+    /* Portada */
+    .hero{background:var(--navy);color:var(--white);padding:96px 0 104px}
+    .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,5.5vw,3.9rem);line-height:1.08;letter-spacing:-.02em;max-width:17em;margin:0 0 24px}
+    .lead{font-size:1.25rem;max-width:33em;margin:0 0 36px;color:#d6dee5}
+    .actions{display:flex;flex-wrap:wrap;gap:14px}
+    .btn{display:inline-block;font:inherit;font-weight:600;background:var(--teal);color:var(--white);border:0;border-radius:6px;padding:14px 28px;text-decoration:none;cursor:pointer}
+    .btn:hover{background:var(--teal-d)}
+    .hero .btn{background:var(--brass);color:var(--navy)}
+    .hero .btn:hover{background:#c79c48}
+    .hero .btn-ghost{background:transparent;color:var(--white);border:2px solid #5d7080}
+    .hero .btn-ghost:hover{background:transparent;border-color:var(--white)}
+
+    /* Secciones */
+    .block{padding:80px 0}
+    .block.alt{background:var(--mist)}
+    h2{font-family:var(--display);font-weight:700;font-size:2rem;line-height:1.2;margin:0 0 32px}
+    h3{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:0 0 6px}
+    .cols{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:start}
+    .cols h2{margin:0}
+    .contact h2{margin-bottom:16px}
+    .cols p{margin:0 0 16px;max-width:34em}
+
+    .rows{margin:0;border-top:2px solid var(--navy)}
+    .rows div{display:grid;grid-template-columns:260px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
+    .rows dt{font-family:var(--display);font-weight:700;font-size:1.2rem}
+    .rows dd{margin:0;color:var(--muted)}
+
+    .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;counter-reset:paso}
+    .steps li{counter-increment:paso;border-top:2px solid var(--navy);padding-top:16px}
+    .steps li::before{content:counter(paso);display:block;font-family:var(--display);font-weight:800;font-size:1.6rem;color:var(--brass);margin-bottom:4px}
+    .steps p{margin:0;color:var(--muted);font-size:1rem}
+
+    .faq details{border-bottom:1px solid var(--line);padding:16px 0}
+    .faq details:first-child{border-top:2px solid var(--navy)}
+    .faq summary{font-family:var(--display);font-weight:700;cursor:pointer}
+    .faq p{margin:10px 0 0;color:var(--muted)}
+
+    /* Contacto */
+    .data{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:16px}
+    .form{display:grid;gap:8px}
+    .form label{font-weight:600;margin-top:8px}
+    .form input,.form textarea{font:inherit;width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:6px;background:var(--white);color:var(--navy)}
+    .form input:focus,.form textarea:focus{border-color:var(--teal)}
+    .form .btn{justify-self:start;margin-top:16px}
+    .hint{font-size:.9rem;color:var(--muted);margin:4px 0 0}
+
+    /* Pie */
+    .foot{background:var(--navy);color:#c3cfd8;padding:28px 0;font-size:.95rem}
+    .foot a{color:#c3cfd8}
+    .foot-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+    .foot p{margin:0}
+
+    /* Móvil */
+    @media (max-width:820px){
+      .menu-btn{display:inline-block}
+      .nav{display:none;flex-direction:column;align-items:flex-start;gap:14px;width:100%;padding:8px 0 16px}
+      .nav.open{display:flex}
+      .hero{padding:64px 0 72px}
+      .block{padding:56px 0}
+      .cols{grid-template-columns:1fr;gap:24px}
+      .rows div{grid-template-columns:1fr;gap:4px}
+      .steps{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:520px){.steps{grid-template-columns:1fr}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <header class="top">
+    <div class="wrap top-in">
+      <a class="brand" href="#inicio">Tu empresa</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menú</button>
+      <nav id="nav" class="nav" aria-label="Principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#nosotros">Sobre nosotros</a>
+        <a href="#preguntas">Preguntas</a>
+        <a class="nav-cta" href="#contacto">Pedir presupuesto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="wrap">
+        <h1>Soluciones profesionales, con plazos claros y trato directo.</h1>
+        <p class="lead">Explica en una frase qué haces, para quién y qué consigue el cliente contigo. Cambia este texto por el tuyo.</p>
+        <div class="actions">
+          <a class="btn" href="#contacto">Pedir presupuesto</a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="servicios">
+      <div class="wrap">
+        <h2>Servicios</h2>
+        <dl class="rows">
+          <div><dt>Servicio principal</dt><dd>Qué incluye, para quién es y qué resultado obtiene el cliente. Dos líneas como máximo.</dd></div>
+          <div><dt>Segundo servicio</dt><dd>Qué incluye, para quién es y qué resultado obtiene el cliente. Dos líneas como máximo.</dd></div>
+          <div><dt>Tercer servicio</dt><dd>Qué incluye, para quién es y qué resultado obtiene el cliente. Dos líneas como máximo.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="block alt" id="proceso">
+      <div class="wrap">
+        <h2>Cómo trabajamos</h2>
+        <ol class="steps">
+          <li><h3>Hablamos</h3><p>Me cuentas qué necesitas y respondo en menos de 24 horas laborables.</p></li>
+          <li><h3>Propuesta</h3><p>Recibes un presupuesto cerrado con alcance, precio y fechas.</p></li>
+          <li><h3>Ejecución</h3><p>Trabajo en el plazo acordado y te informo de cada avance.</p></li>
+          <li><h3>Entrega y soporte</h3><p>Revisamos juntos el resultado y te acompaño después de entregarlo.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="nosotros">
+      <div class="wrap cols">
+        <h2>Sobre nosotros</h2>
+        <div>
+          <p>Escribe aquí quién eres, cuántos años de experiencia tienes y qué te diferencia. Dos o tres frases, con datos reales y comprobables.</p>
+          <p>Añade un segundo párrafo con tu forma de trabajar: cómo te comunicas, qué garantizas y qué puede esperar el cliente.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block alt" id="preguntas">
+      <div class="wrap cols">
+        <h2>Preguntas frecuentes</h2>
+        <div class="faq">
+          <details><summary>¿Cuánto cuesta?</summary><p>Indica aquí tus precios o de qué dependen. El presupuesto es sin compromiso.</p></details>
+          <details><summary>¿Cuánto tarda?</summary><p>Indica aquí los plazos habituales según el tipo de trabajo.</p></details>
+          <details><summary>¿Cómo se paga?</summary><p>Indica aquí las formas de pago y si se factura.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="block contact" id="contacto">
+      <div class="wrap cols">
+        <div>
+          <h2>Pide tu presupuesto</h2>
+          <p>Cuéntame qué necesitas y te respondo en menos de 24 horas laborables.</p>
+          <ul class="data">
+            <li><strong>Correo</strong><br><a href="mailto:tu-correo@ejemplo.com">tu-correo@ejemplo.com</a></li>
+            <li><strong>Teléfono</strong><br><a href="tel:+34000000000">+34 000 000 000</a></li>
+            <li><strong>Horario</strong><br>Lunes a viernes, de 9:00 a 18:00</li>
+          </ul>
+        </div>
+        <form id="contactForm" class="form">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+          <label for="email">Correo</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+          <label for="mensaje">¿Qué necesitas?</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+          <button class="btn" type="submit">Enviar solicitud</button>
+          <p class="hint">Al enviar se abrirá tu aplicación de correo con el mensaje preparado.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <p>© <span id="year">2026</span> Nombre de tu empresa. Todos los derechos reservados.</p>
+      <p><a href="#">Aviso legal</a> · <a href="#">Privacidad</a> · <a href="#">Cookies</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Cambia este correo por el tuyo
+    const MI_CORREO = "tu-correo@ejemplo.com";
+
+    // Año automático en el pie
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Menú en móvil
+    const menuBtn = document.getElementById("menuBtn");
+    const nav = document.getElementById("nav");
+
+    menuBtn.addEventListener("click", () => {
+      const abierto = nav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", abierto);
+    });
+
+    nav.querySelectorAll("a").forEach((enlace) => {
+      enlace.addEventListener("click", () => {
+        nav.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Formulario: abre el correo con el mensaje preparado
+    document.getElementById("contactForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const datos = new FormData(e.target);
+      const asunto = encodeURIComponent("Solicitud de presupuesto de " + datos.get("nombre"));
+      const cuerpo = encodeURIComponent(
+        datos.get("mensaje") + "\n\nNombre: " + datos.get("nombre") + "\nCorreo: " + datos.get("email")
+      );
+      window.location.href = "mailto:" + MI_CORREO + "?subject=" + asunto + "&body=" + cuerpo;
+    });
+  </script>
+</body>
+</html>
